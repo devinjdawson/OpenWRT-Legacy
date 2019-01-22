@@ -1,4 +1,4 @@
-# 
+#
 # Copyright (C) 2006 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
@@ -12,7 +12,7 @@ PKG_VERSION:=20051022
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)_gruen.4g__$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=http://downloads.openwrt.org/sources/
+PKG_SOURCE_URL:=https://downloads.pangubox.com/sources/
 PKG_MD5SUM:=a3e4f24155aa3ba5aa502bc63fdaa6ad
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
