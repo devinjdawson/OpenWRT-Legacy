@@ -5,7 +5,7 @@ PKG_VERSION:=2014-07-18
 PKG_RELEASE=$(PKG_SOURCE_VERSION)
 
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=http://git.openwrt.org/project/usbmode.git
+PKG_SOURCE_URL:=http://git.archive.openwrt.org/project/usbmode.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=01ecc3b9764d1dd89cf36ede0a2d98f9adb0cd33
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
