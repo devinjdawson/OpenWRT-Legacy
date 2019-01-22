@@ -12,7 +12,7 @@ PKG_NAME:=mac80211
 
 PKG_VERSION:=2014-05-22
 PKG_RELEASE:=1
-PKG_SOURCE_URL:=http://mirror2.openwrt.org/sources
+PKG_SOURCE_URL:=https://downloads.pangubox.com/sources/
 PKG_BACKPORT_VERSION:=
 PKG_MD5SUM:=367937d4f8c05cb36ca989ee26abc3df
 
