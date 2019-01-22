@@ -1,4 +1,4 @@
-# 
+#
 # Copyright (C) 2006 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
@@ -10,7 +10,7 @@ PKG_NAME:=lzma
 PKG_VERSION:=4.65
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
-PKG_SOURCE_URL:=http://downloads.openwrt.org/sources/
+PKG_SOURCE_URL:=https://downloads.pangubox.com/sources/
 PKG_MD5SUM:=434e51a018b4c8ef377bf81520a53af0
 
 HOST_BUILD_DIR:=$(BUILD_DIR_HOST)/$(PKG_NAME)-$(PKG_VERSION)
