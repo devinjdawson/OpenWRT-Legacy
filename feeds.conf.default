@@ -4,7 +4,7 @@ src-git routing https://github.com/openwrt-routing/packages.git;for-14.07
 src-git telephony https://github.com/openwrt/telephony.git;for-14.07
 src-git management https://github.com/openwrt-management/packages.git;for-14.07
 #src-git oldpackages http://git.openwrt.org/14.07/packages.git
-src-git oldpackages "http://git.archive.openwrt.org/?p=14.07/packages.git;a=commit;h=a2d1927140548a805970f0859150556ea0b22a78"
+src-git oldpackages 'git.archive.openwrt.org/?p=14.07/packages.git;a=commit;h=a2d1927140548a805970f0859150556ea0b22a78'
 #src-svn xwrt http://x-wrt.googlecode.com/svn/trunk/package
 #src-svn phone svn://svn.openwrt.org/openwrt/feeds/phone
 #src-svn efl svn://svn.openwrt.org/openwrt/feeds/efl
