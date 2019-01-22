@@ -587,7 +587,7 @@ define KernelPackage/ath9k/config
 	config ATH9K_SUPPORT_PCOEM
 		bool "Support chips used in PC OEM cards"
 		depends on PACKAGE_kmod-ath9k
-	
+
 endef
 
 define KernelPackage/ath9k-htc
@@ -1095,7 +1095,7 @@ endif
 PKG_B43_FWV3_NAME:=wl_apsta
 PKG_B43_FWV3_VERSION:=3.130.20.0
 PKG_B43_FWV3_SOURCE:=$(PKG_B43_FWV3_NAME)-$(PKG_B43_FWV3_VERSION).o
-PKG_B43_FWV3_SOURCE_URL:=http://downloads.openwrt.org/sources/
+PKG_B43_FWV3_SOURCE_URL:=https://downloads.pangubox.com/sources/
 PKG_B43_FWV3_MD5SUM:=e08665c5c5b66beb9c3b2dd54aa80cb3
 
 define Download/b43
