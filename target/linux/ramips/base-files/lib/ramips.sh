@@ -133,6 +133,9 @@ ramips_board_detect() {
 	*"F5D8235 v2")
 		name="f5d8235-v2"
 		;;
+	*"F9K1103")
+		name="f9k1103"
+		;;
 	*"Hauppauge Broadway")
 		name="broadway"
 		;;

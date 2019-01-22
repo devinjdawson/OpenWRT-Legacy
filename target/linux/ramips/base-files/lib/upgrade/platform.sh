@@ -74,6 +74,7 @@ platform_check_image() {
 	rt-n14u | \
 	rt-n15 | \
 	rt-n56u | \
+	f9k1103 | \
 	rut5xx | \
 	sl-r7205 | \
 	tew-691gr | \

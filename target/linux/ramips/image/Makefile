@@ -489,7 +489,7 @@ Image/Build/Profile/WCR150GN=$(call BuildFirmware/Default4M/$(1),$(1),wcr150gn,W
 buffalo_whrg300n_mtd_size=3801088
 define BuildFirmware/WHRG300N/squashfs
 	$(call BuildFirmware/Default4M/$(1),$(1),whr-g300n,WHR-G300N)
-	# the following line has a bad argument 3 ... the old Makefile was already broken	
+	# the following line has a bad argument 3 ... the old Makefile was already broken
 	$(call BuildFirmware/Buffalo,$(1),whr-g300n,whr-g300n)
 	if [ -e "$(call sysupname,$(1),$(2))" ]; then \
 		( \
@@ -685,6 +685,14 @@ define BuildFirmware/RTN56U/squashfs
 endef
 Image/Build/Profile/RTN56U=$(call BuildFirmware/RTN56U/$(1),$(1),rt-n56u,RTN56U)
 
+define BuildFirmware/F9K1103/squashfs
+	$(call BuildFirmware/Default8M/$(1),$(1),f9k1103,F9K1103)
+	-mkf9k1103img -s $(call sysupname,$(1),f9k1103)
+	-cp $(call sysupname,$(1),f9k1103) $(call imgname,$(1),f9k1103)-factory.bin
+	-mkf9k1103img -f $(call imgname,$(1),f9k1103)-factory.bin
+endef
+Image/Build/Profile/F9K1103=$(call BuildFirmware/F9K1103/$(1),$(1),f9k1103,F9K1103)
+
 Image/Build/Profile/TEW691GR=$(call BuildFirmware/UMedia/$(1),$(1),tew-691gr,TEW-691GR,0x026910)
 
 Image/Build/Profile/TEW692GR=$(call BuildFirmware/UMedia/$(1),$(1),tew-692gr,TEW-692GR,0x026920)
@@ -699,6 +707,7 @@ define Image/Build/Profile/Default
 	$(call Image/Build/Profile/DIR645,$(1))
 	$(call Image/Build/Profile/OMNIEMBHPM,$(1))
 	$(call Image/Build/Profile/RTN56U,$(1))
+	$(call Image/Build/Profile/F9K1103,$(1))
 	$(call Image/Build/Profile/BR6475ND,$(1))
 	$(call Image/Build/Profile/TEW691GR,$(1))
 	$(call Image/Build/Profile/TEW692GR,$(1))
