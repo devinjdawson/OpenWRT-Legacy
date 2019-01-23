@@ -171,7 +171,7 @@ process_image(char *progname, char *filename, op_mode_t opmode)
 		hdr->tail.asus.kernel.minor = 0;
 		hdr->tail.asus.fs.major = 0;
 		hdr->tail.asus.fs.minor = 0;
-		strcpy((char *)&hdr->tail.asus.productid, "N750F9K1103VB", IH_PRODLEN);
+		strcpy((char *)&hdr->tail.asus.productid, "N750F9K1103VB");
 	}
 
 	if (hdr->tail.asus.ih_ksz == 0)
