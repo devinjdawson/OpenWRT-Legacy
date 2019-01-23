@@ -23,7 +23,7 @@
 
 #define IH_MAGIC	0x27051956
 #define IH_NMLEN	32
-#define IH_PRODLEN	32
+#define IH_PRODLEN	23
 
 #define IH_TYPE_INVALID		0
 #define IH_TYPE_STANDALONE	1
@@ -171,7 +171,7 @@ process_image(char *progname, char *filename, op_mode_t opmode)
 		hdr->tail.asus.kernel.minor = 0;
 		hdr->tail.asus.fs.major = 0;
 		hdr->tail.asus.fs.minor = 0;
-		strncpy((char *)&hdr->tail.asus.productid, "N750F9K1103VB", IH_PRODLEN);
+		strncpy((char *)&hdr->tail.asus.productid, "F9K1103", IH_PRODLEN);
 	}
 
 	if (hdr->tail.asus.ih_ksz == 0)
