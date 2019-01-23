@@ -44,19 +44,12 @@
 			pci-bridge@1 {
 				status = "okay";
 				wmac@0,0 {
-                                        compatible = "ralink,rt2880-pci", "pciclass060400", "pciclass0604";
-                                        reg = < 0x10000 0 0 0 0 >;
-                                        ralink,eeprom = "rt2x00pci_1_0.eeprom";
-                                };
-
+					compatible = "ralink,rt2880-pci", "pciclass060400", "pciclass0604";
+					reg = < 0x10000 0 0 0 0 >;
+					ralink,eeprom = "soc_wmac.eeprom";
+				};
 			};
 		};
-	};
-
-	wmac@10180000 {
-		status = "okay";
-		ralink,2ghz = <0>;
-		ralink,mtd-eeprom = <&factory 0>;
 	};
 
 	ehci@101c0000 {
@@ -76,14 +69,14 @@
 		#size-cells = <1>;
 
 		partition@0 {
-			reg = <0x0 0x0030000>;
+			reg = <0x00000000 0x00030000>;
 			label = "u-boot";
 			read-only;
 		};
 
 		partition@30000 {
 			reg = <0x00030000 0x00010000>;
-			label = "u-boot-env";
+			label = "nvram";
 			read-only;
 		};
 
@@ -93,9 +86,20 @@
 			read-only;
 		};
 
-		partition@50000 {
-			reg = <0x00050000 0x007b0000>;
+		devdata: partition@50000 {
+			reg = <0x00050000 0x00020000>;
+			label = "devdata";
+			read-only;
+		};
+
+		partition@70000 {
+			reg = <0x00070000 0x00790000>;
 			label = "firmware";
+		};
+
+		partition@170000 {
+			reg = <0x00270000 0x00590000>;
+			label = "rootfs";
 		};
 	};
 
@@ -143,4 +147,18 @@
 			gpios = <&gpio1 0 1>;
 		};
 	};
+	/* Unclear if this is the correct gpio setup; the USB ports are
+	   unpopulated on a stock BR-6475nD, even though the hardware exists
+	   and the headers are there. */
+	/*
+	gpio_export {
+		compatible = "gpio-export";
+		#size-cells = <0>;
+		usb {
+			gpio-export,name="usb";
+			gpio-export,output=<0>;
+			gpios = <&gpio0 19 0>;
+		};
+	};
+	*/
 };
