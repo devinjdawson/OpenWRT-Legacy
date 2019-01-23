@@ -50,7 +50,7 @@ typedef struct {
 typedef struct {
 	version_t	kernel;
 	version_t	fs;
-	uint32_t	productid[IH_PRODLEN];
+	uint8_t		productid[IH_PRODLEN];
 	uint8_t  	sub_fs;
 	uint32_t	ih_ksz;
 } asus_t;
@@ -171,7 +171,7 @@ process_image(char *progname, char *filename, op_mode_t opmode)
 		hdr->tail.asus.kernel.minor = 0;
 		hdr->tail.asus.fs.major = 0;
 		hdr->tail.asus.fs.minor = 0;
-		strncpy((char *)&hdr->tail.asus.productid, "N750F9K1103VB", IH_PRODLEN);
+		strcpy((char *)&hdr->tail.asus.productid, "N750F9K1103VB", IH_PRODLEN);
 	}
 
 	if (hdr->tail.asus.ih_ksz == 0)
