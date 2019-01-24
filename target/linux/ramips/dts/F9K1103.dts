@@ -84,7 +84,7 @@
 		#size-cells = <1>;
 
 		partition@0 {
-			reg = <0x0 0x0030000>;
+			reg = <0x0000000 0x0030000>;
 			label = "u-boot";
 			read-only;
 		};
@@ -100,14 +100,9 @@
 			label = "factory";
 			read-only;
 		};
-		devdata: partition@50000 {
-			reg = <0x00050000 0x00020000>;
-			label = "devdata";
-			read-only;
-		};
 
-		partition@70000 {
-			reg = <0x00070000 0x00790000>;
+		partition@50000 {
+			reg = <0x00050000 0x007f0000>;
 			label = "firmware";
 		};
 
@@ -115,8 +110,8 @@
 
 	rtl8367 {
 		compatible = "realtek,rtl8367";
-		gpio-sda = <&gpio0 5 0>;
-		gpio-sck = <&gpio0 4 0>;
+		gpio-sda = <&gpio0 1 0>;
+		gpio-sck = <&gpio0 2 0>;
 		realtek,extif0 = <1 0 1 1 1 1 1 1 2>;
 	};
 
