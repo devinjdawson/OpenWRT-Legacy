@@ -115,9 +115,9 @@
 
 	rtl8367 {
 		compatible = "realtek,rtl8367";
-		gpio-sda = <&gpio0 1 0>;
-		gpio-sck = <&gpio0 2 0>;
-		realtek,extif1 = <1 0 1 1 1 1 1 1 2>;
+		gpio-sda = <&gpio0 5 0>;
+		gpio-sck = <&gpio0 4 0>;
+		realtek,extif0 = <1 0 1 1 1 1 1 1 2>;
 	};
 
 	gpio-keys-polled {
