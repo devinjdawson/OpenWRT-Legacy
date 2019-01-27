@@ -49,6 +49,10 @@
 		uartlite@c00 {
 			status = "okay";
 		};
+
+		timer@100 {
+			status = "okay";
+		};
 	};
 
 	pinctrl {
@@ -71,9 +75,6 @@
 	ethernet@10100000 {
 			status = "okay";
        		mtd-mac-address = <&factory 0x4>;
-		port@0 {
-			ralink,fixed-link = <1000 1 1 1>;
-		};
 	};
 
 	pci@10140000 {
@@ -94,7 +95,7 @@
 				wmac@0,0 {
 					compatible = "ralink,rt2880-pci", "pciclass060400", "pciclass0604";
 					reg = < 0x10000 0 0 0 0 >;
-					ralink,eeprom = "rt2x00pci_1_0.eeprom";
+					ralink,eeprom = "soc_wmac.eeprom";
 				};
 			};
 		};
