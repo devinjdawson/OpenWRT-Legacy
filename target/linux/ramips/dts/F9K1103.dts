@@ -65,7 +65,7 @@
 				ralink,group = "mdio";
 				ralink,function = "mdio";
 			};
-		};	
+		};
 	};
 
 	ethernet@10100000 {
@@ -143,7 +143,7 @@
 		};
 		wps {
 			label = "wps";
-			gpios = <&gpio1 26 1>;
+			gpios = <&gpio0 26 1>;
 			linux,code = <0x211>;
 		};
 	};
@@ -152,24 +152,24 @@
 		compatible = "gpio-leds";
 
 		power {
-			label = "asus:blue:power";
+			label = "belkin:amber:power";
 			gpios = <&gpio0 0 1>;
 		};
 		lan {
-			label = "asus:blue:lan";
+			label = "belkin:amber:lan";
 			gpios = <&gpio0 13 1>;
 		};
 		wan {
-			label = "asus:blue:wan";
+			label = "belkin:blue:wan";
 			gpios = <&gpio0 12 1>;
 		};
 		usb1 {
-			label = "asus:blue:usb1";
+			label = "belkin:green:usb1";
 			gpios = <&gpio0 9 1>;
 		};
 
 		usb2 {
-			label = "asus:blue:usb2";
+			label = "belkin:green:usb2";
 			gpios = <&gpio0 14 1>;
 		};
 	};
