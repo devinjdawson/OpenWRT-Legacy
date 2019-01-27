@@ -74,36 +74,40 @@
 	ohci@101c1000 {
 		status = "okay";
 	};
+	&spi0 {
+		status = "okay";
 
-	nor-flash@1c000000 {
-		compatible = "cfi-flash";
-		reg = <0x1c000000 0x800000>;
+		m25p80@0 {
+			bank-width = <2>;
+			#address-cells = <1>;
+			#size-cells = <1>;
+			compatible = "jedec,spi-nor";
+			reg = <0>;
+			linux,modalias = "m25p80", "mx25l3206e";
+			spi-max-frequency = <10000000>;
 
-		bank-width = <2>;
-		#address-cells = <1>;
-		#size-cells = <1>;
+			partition@0 {
+				reg = <0x0000000 0x0030000>;
+				label = "u-boot";
+				read-only;
+			};
 
-		partition@0 {
-			reg = <0x0000000 0x0030000>;
-			label = "u-boot";
-			read-only;
-		};
+			partition@30000 {
+				reg = <0x00030000 0x00010000>;
+				label = "u-boot-env";
+				read-only;
+			};
 
-		partition@30000 {
-			reg = <0x00030000 0x00010000>;
-			label = "u-boot-env";
-			read-only;
-		};
+			factory: partition@40000 {
+				reg = <0x00040000 0x00010000>;
+				label = "factory";
+				read-only;
+			};
 
-		factory: partition@40000 {
-			reg = <0x00040000 0x00010000>;
-			label = "factory";
-			read-only;
-		};
-
-		partition@50000 {
-			reg = <0x00050000 0x007f0000>;
-			label = "firmware";
+			partition@50000 {
+				reg = <0x00050000 0x007f0000>;
+				label = "firmware";
+			};
 		};
 
 	};
