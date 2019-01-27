@@ -118,7 +118,7 @@
 		#size-cells = <0>;
 		usb {
 			gpio-export,name="usb";
-			gpio-export,output=<0>;
+			gpio-export,output=<1>;
 			gpios = <&gpio0 19 0>;
 		};
 	};
