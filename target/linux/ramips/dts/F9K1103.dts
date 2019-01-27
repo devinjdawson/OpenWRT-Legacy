@@ -57,7 +57,15 @@
 				ralink,group = "i2c", "jtag", "uartf";
 				ralink,function = "gpio";
 			};
-		};
+			rgmii {
+				ralink,group = "rgmii";
+				ralink,function = "rgmii";
+			};
+			mdio {
+				ralink,group = "mdio";
+				ralink,function = "mdio";
+			};
+		};	
 	};
 
 	ethernet@10100000 {
