@@ -86,7 +86,7 @@
 				wmac@0,0 {
 					compatible = "ralink,rt2880-pci", "pciclass060400", "pciclass0604";
 					reg = < 0x10000 0 0 0 0 >;
-					ralink,eeprom = "soc_wmac.eeprom";
+					ralink,eeprom = "rt2x00pci_1_0.eeprom";
 				};
 			};
 		};
