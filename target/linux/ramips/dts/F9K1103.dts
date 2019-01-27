@@ -6,13 +6,6 @@
 	compatible = "F9K1103", "ralink,rt3883-soc";
 	model = "Belkin F9K1103";
 
-	aliases {
-		led-boot = &led_status_amber;
-		led-failsafe = &led_status_amber;
-		led-running = &led_status_blue;
-		led-upgrade = &led_status_amber;
-	};
-
 	palmbus@10000000 {
 		timer@100 {
 			status = "okay";
