@@ -13,66 +13,6 @@
 		led-upgrade = &led_status_amber;
 	};
 
-	gpio-leds {
-		compatible = "gpio-leds";
-
-		led_status_amber: internet_amber {
-			label = "f9k1109:amber:internet";
-			gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
-		};
-
-		led_status_blue: internet_blue {
-			label = "f9k1109:blue:internet";
-			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
-		};
-
-		usb1 {
-			label = "f9k1109:green:usb1";
-			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
-		};
-
-		usb2 {
-			label = "f9k1109:green:usb2";
-			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
-		};
-
-		wps_amber {
-			label = "f9k1109:amber:wps";
-			gpios = <&gpio0 0 GPIO_ACTIVE_LOW>;
-		};
-
-		wps_blue {
-			label = "f9k1109:blue:wps";
-			gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
-		};
-	};
-
-	gpio-keys-polled {
-		compatible = "gpio-keys-polled";
-		#address-cells = <1>;
-		#size-cells = <0>;
-		poll-interval = <100>;
-
-		reset {
-			label = "reset";
-			gpios = <&gpio0 25 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_RESTART>;
-		};
-
-		wps {
-			label = "wps";
-			gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_WPS_BUTTON>;
-		};
-	};
-
-	rtl8367b {
-		compatible = "realtek,rtl8367b";
-		gpio-sda = <&gpio0 1 GPIO_ACTIVE_HIGH>;
-		gpio-sck = <&gpio0 2 GPIO_ACTIVE_HIGH>;
-		realtek,extif1 = <1 0 1 1 1 1 1 1 2>;
-	};
-
 	palmbus@10000000 {
 		timer@100 {
 			status = "okay";
@@ -97,9 +37,8 @@
 	};
 
 	ethernet@10100000 {
-		status = "okay";
-       	mtd-mac-address = <&factory 0x4>;
-
+			status = "okay";
+       		mtd-mac-address = <&factory 0x4>;
 		port@0 {
 			ralink,fixed-link = <1000 1 1 1>;
 		};
@@ -179,6 +118,13 @@
 		};
 	};
 
+	rtl8367b {
+		compatible = "realtek,rtl8367b";
+		gpio-sda = <&gpio0 1 1>;
+		gpio-sck = <&gpio0 2 1>;
+		realtek,extif1 = <1 0 1 1 1 1 1 1 2>;
+		};
+
 	gpio_export {
 		compatible = "gpio-export";
 		#size-cells = <0>;
@@ -189,4 +135,46 @@
 		};
 	};
 
+	gpio-keys-polled {
+		compatible = "gpio-keys-polled";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		poll-interval = <100>;
+		reset {
+			label = "reset";
+			gpios = <&gpio0 25 1>;
+			linux,code = <0x198>;
+		};
+		wps {
+			label = "wps";
+			gpios = <&gpio1 26 1>;
+			linux,code = <0x211>;
+		};
+	};
+
+	gpio-leds {
+		compatible = "gpio-leds";
+
+		power {
+			label = "asus:blue:power";
+			gpios = <&gpio0 0 1>;
+		};
+		lan {
+			label = "asus:blue:lan";
+			gpios = <&gpio0 13 1>;
+		};
+		wan {
+			label = "asus:blue:wan";
+			gpios = <&gpio0 12 1>;
+		};
+		usb1 {
+			label = "asus:blue:usb";
+			gpios = <&gpio0 9 1>;
+		};
+
+		usb2 {
+			label = "asus:blue:usb";
+			gpios = <&gpio0 14 1>;
+		};
+	};
 };
