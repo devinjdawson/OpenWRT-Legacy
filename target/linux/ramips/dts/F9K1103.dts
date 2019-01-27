@@ -74,7 +74,8 @@
 	ohci@101c1000 {
 		status = "okay";
 	};
-	&spi0 {
+
+	spi0 {
 		status = "okay";
 
 		m25p80@0 {
@@ -117,6 +118,16 @@
 		gpio-sda = <&gpio0 1 1>;
 		gpio-sck = <&gpio0 2 1>;
 		realtek,extif1 = <1 0 1 1 1 1 1 1 2>;
+		};
+
+	gpio_export {
+		compatible = "gpio-export";
+		#size-cells = <0>;
+		usb {
+			gpio-export,name="usb";
+			gpio-export,output=<0>;
+			gpios = <&gpio0 19 0>;
+		};
 	};
 
 	gpio-keys-polled {
@@ -151,19 +162,14 @@
 			label = "asus:blue:wan";
 			gpios = <&gpio0 12 1>;
 		};
-		usb {
+		usb1 {
 			label = "asus:blue:usb";
 			gpios = <&gpio0 9 1>;
 		};
-	};
 
-	gpio_export {
-		compatible = "gpio-export";
-		#size-cells = <0>;
-		usb {
-			gpio-export,name="usb";
-			gpio-export,output=<0>;
-			gpios = <&gpio0 19 0>;
+		usb2 {
+			label = "asus:blue:usb";
+			gpios = <&gpio0 14 1>;
 		};
 	};
 };
