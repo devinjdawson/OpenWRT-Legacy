@@ -10,8 +10,6 @@
 		spi@b00 {
 			status = "okay";
 			m25p80@0 {
-				#address-cells = <1>;
-				#size-cells = <1>;
 				compatible = "mx25l6405d";
 				reg = <0 0>;
 				linux,modalias = "m25p80", "mx25l6405d";
@@ -86,6 +84,7 @@
 
 		pinctrl-names = "default";
 		pinctrl-0 = <&pci_pins>;
+		
 		pci_pins: pci {
 			pci {
 				ralink,group = "pci";
