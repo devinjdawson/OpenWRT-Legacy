@@ -51,127 +51,127 @@
 		timer@100 {
 			status = "okay";
 		};
+	};
 
-		pinctrl {
-			state_default: pinctrl0 {
-				gpio {
-					ralink,group = "i2c", "jtag", "uartf";
-					ralink,function = "gpio";
-				};
-				rgmii {
-					ralink,group = "rgmii";
-					ralink,function = "rgmii";
-				};
-				mdio {
-					ralink,group = "mdio";
-					ralink,function = "mdio";
-				};
+	pinctrl {
+		state_default: pinctrl0 {
+			gpio {
+				ralink,group = "i2c", "jtag", "uartf";
+				ralink,function = "gpio";
+			};
+			rgmii {
+				ralink,group = "rgmii";
+				ralink,function = "rgmii";
+			};
+			mdio {
+				ralink,group = "mdio";
+				ralink,function = "mdio";
+			};
+		};
+	};
+
+	ethernet@10100000 {
+			status = "okay";
+       		mtd-mac-address = <&factory 0x4>;
+
+			port@0 {
+				ralink,fixed-link = <1000 1 1 1>;
+			};
+	};
+
+	pci@10140000 {
+		status = "okay";
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&pci_pins>;
+
+		pci_pins: pci {
+			pci {
+				ralink,group = "pci";
+				ralink,function = "pci-fnc";
 			};
 		};
 
-		ethernet@10100000 {
+		host-bridge {
+			pci-bridge@1 {
 				status = "okay";
-	       		mtd-mac-address = <&factory 0x4>;
-
-				port@0 {
-					ralink,fixed-link = <1000 1 1 1>;
-				};
-		};
-
-		pci@10140000 {
-			status = "okay";
-
-			pinctrl-names = "default";
-			pinctrl-0 = <&pci_pins>;
-
-			pci_pins: pci {
-				pci {
-					ralink,group = "pci";
-					ralink,function = "pci-fnc";
-				};
-			};
-
-			host-bridge {
-				pci-bridge@1 {
-					status = "okay";
-					wmac@0,0 {
-						compatible = "ralink,rt2880-pci", "pciclass060400", "pciclass0604";
-						reg = < 0x10000 0 0 0 0 >;
-					};
+				wmac@0,0 {
+					compatible = "ralink,rt2880-pci", "pciclass060400", "pciclass0604";
+					reg = < 0x10000 0 0 0 0 >;
 				};
 			};
 		};
+	};
 
-		wmac@10180000 {
-			status = "okay";
-			ralink,2ghz = <0>;
-			ralink,mtd-eeprom = <&factory 0>;
+	wmac@10180000 {
+		status = "okay";
+		ralink,2ghz = <0>;
+		ralink,mtd-eeprom = <&factory 0>;
+	};
+
+	pci1 {
+		status = "okay";
+	};
+
+	ehci@101c0000 {
+		status = "okay";
+	};
+
+	ohci@101c1000 {
+		status = "okay";
+	};
+
+	rtl8367b {
+		compatible = "realtek,rtl8367b";
+		gpio-sda = <&gpio0 1 1>;
+		gpio-sck = <&gpio0 2 1>;
+		realtek,extif1 = <1 0 1 1 1 1 1 1 2>;
 		};
 
-		pci1 {
-			status = "okay";
+	gpio-keys-polled {
+		compatible = "gpio-keys-polled";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		poll-interval = <100>;
+		reset {
+			label = "reset";
+			gpios = <&gpio0 25 1>;
+			linux,code = <0x198>;
+		};
+		wps {
+			label = "wps";
+			gpios = <&gpio0 26 1>;
+			linux,code = <0x211>;
+		};
+	};
+
+	gpio-leds {
+		compatible = "gpio-leds";
+
+		small-amber {
+			label = "belkin:amber:small";
+			gpios = <&gpio0 0 1>;
+		};
+		small-blue {
+			label = "belkin:blue:small";
+			gpios = <&gpio0 10 1>;
+		};
+		big-amber {
+			label = "belkin:amber:big";
+			gpios = <&gpio0 13 1>;
+		};
+		big-blue {
+			label = "belkin:blue:big";
+			gpios = <&gpio0 12 1>;
+		};
+		usb1 {
+			label = "belkin:green:usb1";
+			gpios = <&gpio0 9 1>;
 		};
 
-		ehci@101c0000 {
-			status = "okay";
-		};
-
-		ohci@101c1000 {
-			status = "okay";
-		};
-
-		rtl8367b {
-			compatible = "realtek,rtl8367b";
-			gpio-sda = <&gpio0 1 1>;
-			gpio-sck = <&gpio0 2 1>;
-			realtek,extif1 = <1 0 1 1 1 1 1 1 2>;
-			};
-
-		gpio-keys-polled {
-			compatible = "gpio-keys-polled";
-			#address-cells = <1>;
-			#size-cells = <0>;
-			poll-interval = <100>;
-			reset {
-				label = "reset";
-				gpios = <&gpio0 25 1>;
-				linux,code = <0x198>;
-			};
-			wps {
-				label = "wps";
-				gpios = <&gpio0 26 1>;
-				linux,code = <0x211>;
-			};
-		};
-
-		gpio-leds {
-			compatible = "gpio-leds";
-
-			small-amber {
-				label = "belkin:amber:small";
-				gpios = <&gpio0 0 1>;
-			};
-			small-blue {
-				label = "belkin:blue:small";
-				gpios = <&gpio0 10 1>;
-			};
-			big-amber {
-				label = "belkin:amber:big";
-				gpios = <&gpio0 13 1>;
-			};
-			big-blue {
-				label = "belkin:blue:big";
-				gpios = <&gpio0 12 1>;
-			};
-			usb1 {
-				label = "belkin:green:usb1";
-				gpios = <&gpio0 9 1>;
-			};
-
-			usb2 {
-				label = "belkin:green:usb2";
-				gpios = <&gpio0 14 1>;
-			};
+		usb2 {
+			label = "belkin:green:usb2";
+			gpios = <&gpio0 14 1>;
 		};
 	};
 };
