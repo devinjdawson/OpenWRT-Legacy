@@ -75,7 +75,7 @@
 	ethernet@10100000 {
 			status = "okay";
        		mtd-mac-address = <&factory 0x4>;
-			
+
 			port@0 {
 				ralink,fixed-link = <1000 1 1 1>;
 			};
@@ -99,7 +99,6 @@
 				wmac@0,0 {
 					compatible = "ralink,rt2880-pci", "pciclass060400", "pciclass0604";
 					reg = < 0x10000 0 0 0 0 >;
-					ralink,eeprom = "soc_wmac.eeprom";
 				};
 			};
 		};
@@ -110,6 +109,9 @@
 		ralink,2ghz = <0>;
 		ralink,mtd-eeprom = <&factory 0>;
 	};
+
+	pci1 {
+		status = "okay";
 
 	ehci@101c0000 {
 		status = "okay";
@@ -125,16 +127,6 @@
 		gpio-sck = <&gpio0 2 1>;
 		realtek,extif1 = <1 0 1 1 1 1 1 1 2>;
 		};
-
-	gpio_export {
-		compatible = "gpio-export";
-		#size-cells = <0>;
-		usb {
-			gpio-export,name="usb";
-			gpio-export,output=<1>;
-			gpios = <&gpio0 19 0>;
-		};
-	};
 
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
@@ -156,16 +148,20 @@
 	gpio-leds {
 		compatible = "gpio-leds";
 
-		power {
-			label = "belkin:amber:power";
+		small-amber {
+			label = "belkin:amber:small";
 			gpios = <&gpio0 0 1>;
 		};
-		lan {
-			label = "belkin:amber:lan";
+		small-blue {
+			label = "belkin:blue:small";
+			gpios = <&gpio0 10 1>;
+		};
+		big-amber {
+			label = "belkin:amber:big";
 			gpios = <&gpio0 13 1>;
 		};
-		wan {
-			label = "belkin:blue:wan";
+		big-blue {
+			label = "belkin:blue:big";
 			gpios = <&gpio0 12 1>;
 		};
 		usb1 {

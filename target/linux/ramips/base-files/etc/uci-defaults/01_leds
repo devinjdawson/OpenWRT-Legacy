@@ -102,6 +102,12 @@ case $board in
 	f5d8235-v2)
 		set_usb_led "f5d8235v2:blue:storage"
 		;;
+	f9k1103)
+		ucidef_set_led_default "power" "power" "belkin:blue:small" "1"
+		set_wifi_led "belkin:blue:big"
+		set_usb_led "belkin:green:usb1" "usb1-port1"
+		set_usb_led "belkin:green:usb2" "usb1-port2"
+		;;
 	fonera20n)
 		set_usb_led "fonera20n:orange:usb"
 		set_wifi_led "fonera20n:orange:wifi"

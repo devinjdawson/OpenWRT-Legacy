@@ -111,7 +111,7 @@ get_status_led() {
 	rt-n10-plus)
 		status_led="asus:green:wps"
 		;;
-	rt-n56u | wl-330n | wl-330n3g | f9k1103)
+	rt-n56u | wl-330n | wl-330n3g )
 		status_led="asus:blue:power"
 		;;
 	rut5xx)
@@ -138,6 +138,9 @@ get_status_led() {
 		;;
 	w502u)
 		status_led="alfa:blue:wps"
+		;;
+	f9k1103)
+		status_led="belkin:amber:small"
 		;;
 	wcr-150gn)
 		status_led="wcr150gn:amber:power"
