@@ -77,7 +77,7 @@ ramips_setup_interfaces()
 		ucidef_add_switch_vlan "switch0" "2" "1 6t"
 		;;
 
-	br-6475nd)
+	br-6475nd | f9k1103)
 		ucidef_set_interfaces_lan_wan "eth0.1" "eth0.2"
 		ucidef_add_switch "switch0" "1" "1"
 		ucidef_add_switch_vlan "switch0" "1" "1 2 3 4 9t"
@@ -216,7 +216,8 @@ ramips_setup_macs()
 	local wan_mac=""
 
 	case $board in
-	br-6475nd)
+	br-6475nd | \
+		f9k1103)
 		lan_mac=$(cat /sys/class/net/eth0/address)
 		wan_mac=$(mtd_get_mac_binary devdata 7)
 		;;
@@ -274,7 +275,7 @@ ramips_setup_macs()
                 wan_mac=$(mtd_get_mac_binary factory 40)
 		;;
 
-	rt-n56u | f9k1103)
+	rt-n56u)
 		lan_mac=$(cat /sys/class/net/eth0/address)
 		lan_mac=$(macaddr_setbit_la "$lan_mac")
 		wan_mac=$(mtd_get_mac_binary factory 32772)

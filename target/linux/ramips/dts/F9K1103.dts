@@ -59,10 +59,6 @@
 				ralink,group = "i2c", "jtag", "uartf";
 				ralink,function = "gpio";
 			};
-			rgmii {
-				ralink,group = "rgmii";
-				ralink,function = "rgmii";
-			};
 			mdio {
 				ralink,group = "mdio";
 				ralink,function = "mdio";
@@ -130,17 +126,15 @@
 
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
-		#address-cells = <1>;
-		#size-cells = <0>;
 		poll-interval = <100>;
 		reset {
 			label = "reset";
-			gpios = <&gpio0 25 1>;
+			gpios = <&gpio0 25 0>;
 			linux,code = <0x198>;
 		};
 		wps {
 			label = "wps";
-			gpios = <&gpio0 26 1>;
+			gpios = <&gpio0 26 0>;
 			linux,code = <0x211>;
 		};
 	};

@@ -9,6 +9,7 @@ define Profile/F9K1103
 	NAME:=Belkin F9K1103
 	PACKAGES:=kmod-usb-core kmod-usb-ohci kmod-usb2 swconfig
 	UIMAGE_NAME := N750F9K1103VB
+	PDTAG := N750F9K1103VB
 endef
 
 define Profile/F9K1103/Description
