@@ -161,7 +161,6 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
 +	return platform_driver_probe(&gpio_export_driver, of_gpio_export_probe);
 +}
 +device_initcall(of_gpio_export_init);
-
 --- a/drivers/gpio/gpiolib.c
 +++ b/drivers/gpio/gpiolib.c
 @@ -96,7 +96,7 @@ static int gpiod_get_value(const struct
@@ -173,17 +172,6 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
  static int gpiod_export_link(struct device *dev, const char *name,
  			     struct gpio_desc *desc);
  static int gpiod_sysfs_set_active_low(struct gpio_desc *desc, int value);
- @@ -123,7 +123,9 @@
-   */
-  static struct gpio_desc *gpio_to_desc(unsigned gpio)
-  {
- -       if (WARN(!gpio_is_valid(gpio), "invalid GPIO %d\n", gpio))
- +       if (gpio == -EPROBE_DEFER)
- +               return NULL;
- +       else if (WARN(!gpio_is_valid(gpio), "invalid GPIO %d\n", gpio))
-                 return NULL;
-         else
-                 return &gpio_desc[gpio];
 @@ -674,7 +674,7 @@ static ssize_t export_store(struct class
  			status = -ENODEV;
  		goto done;
@@ -266,8 +254,6 @@ Signed-off-by: John Crispin <blogic@openwrt.org>
  		if (err)
  			goto free_gpio;
  	}
-
-
 --- a/include/asm-generic/gpio.h
 +++ b/include/asm-generic/gpio.h
 @@ -202,7 +202,8 @@ extern void gpio_free_array(const struct
