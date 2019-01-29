@@ -1,7 +1,7 @@
 --- a/drivers/gpio/gpiolib.c
 +++ b/drivers/gpio/gpiolib.c
 
- @@ -123,6 +123,9 @@
+@@ -123,6 +123,9 @@
   */
  static struct gpio_desc *gpio_to_desc(unsigned gpio)
  {
