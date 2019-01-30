@@ -12,3 +12,19 @@
 		return NULL;
 	else
 		return &gpio_desc[gpio];
+
+--- a/drivers/input/keyboard/gpio_keys_polled.c
++++ b/drivers/input/keyboard/gpio_keys_polled.c
+@@ -120,6 +120,12 @@  static struct gpio_keys_platform_data *gpio_keys_polled_get_devtree_pdata(struct
+ 	if (nbuttons == 0)
+ 		return NULL;
+
++	for_each_child_of_node(node, pp) {
++		error = of_get_gpio(pp, 0);
++		if (error == -EPROBE_DEFER)
++			goto err_out;
++	}
++
+ 	pdata = kzalloc(sizeof(*pdata) + nbuttons * (sizeof *button),
+ 			GFP_KERNEL);
+ 	if (!pdata) {
