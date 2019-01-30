@@ -126,6 +126,8 @@
 
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
+		#address-cells = <1>;
+		#size-cells = <0>;
 		poll-interval = <100>;
 		reset {
 			label = "reset";
@@ -164,6 +166,15 @@
 		usb2 {
 			label = "belkin:green:usb2";
 			gpios = <&gpio0 14 1>;
+		};
+	};
+	gpio_export {
+		compatible = "gpio-export";
+		#size-cells = <0>;
+		usb {
+			gpio-export,name="usb";
+			gpio-export,output=<1>;
+			gpios = <&gpio0 19 0>;
 		};
 	};
 };
