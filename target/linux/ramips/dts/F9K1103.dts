@@ -91,9 +91,6 @@
 		host-bridge {
 			pci-bridge@1 {
 				status = "okay";
-				wmac@0,0 {
-					compatible = "ralink,rt2880-pci", "pciclass060400", "pciclass0604";
-					reg = < 0x10000 0 0 0 0 >;
 				};
 			};
 		};
@@ -101,8 +98,6 @@
 
 	wmac@10180000 {
 		status = "okay";
-		reg = <0x10000 0 0 0 0>;
-		ralink,5ghz = <0>;
 		ralink,mtd-eeprom = <&factory 0x4>;
 	};
 
@@ -167,15 +162,6 @@
 		usb2 {
 			label = "belkin:green:usb2";
 			gpios = <&gpio0 14 1>;
-		};
-	};
-	gpio_export {
-		compatible = "gpio-export";
-		#size-cells = <0>;
-		usb {
-			gpio-export,name="usb";
-			gpio-export,output=<1>;
-			gpios = <&gpio0 19 0>;
 		};
 	};
 };
