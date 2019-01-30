@@ -65,13 +65,13 @@
 			};
 		};
 	};
-
 	ethernet@10100000 {
 			status = "okay";
        		mtd-mac-address = <&factory 0x4>;
 
 			port@0 {
 				ralink,fixed-link = <1000 1 1 1>;
+				phy-mode = "rgmii";
 			};
 	};
 
@@ -101,8 +101,9 @@
 
 	wmac@10180000 {
 		status = "okay";
+		reg = <0x10000 0 0 0 0>;
 		ralink,5ghz = <0>;
-		ralink,mtd-eeprom = <&factory 0>;
+		ralink,mtd-eeprom = <&factory 0x8000>;
 	};
 
 	pci1 {
