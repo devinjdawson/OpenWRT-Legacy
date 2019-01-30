@@ -101,6 +101,7 @@
 
 	wmac@10180000 {
 		status = "okay";
+		ralink,5ghz = <0>;
 		ralink,2ghz = <0>;
 		ralink,mtd-eeprom = <&factory 0>;
 	};
@@ -129,19 +130,17 @@
 		poll-interval = <100>;
 		reset {
 			label = "reset";
-			gpios = <&gpio0 25 0>;
+			gpios = <&gpio0 25 1>;
 			linux,code = <0x198>;
 		};
 		wps {
 			label = "wps";
-			gpios = <&gpio0 26 0>;
+			gpios = <&gpio0 26 1>;
 			linux,code = <0x211>;
 		};
 	};
 
 	gpio-leds {
-		compatible = "gpio-leds";
-
 		small-amber {
 			label = "belkin:amber:small";
 			gpios = <&gpio0 0 1>;
