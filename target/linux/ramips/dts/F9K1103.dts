@@ -91,7 +91,6 @@
 		host-bridge {
 			pci-bridge@1 {
 				status = "okay";
-				};
 			};
 		};
 	};
